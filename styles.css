@@ -1,0 +1,325 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f0f8ff; 
+}
+
+
+h1 {
+    color: #2c3e50; 
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 10px;
+    left: 0;
+    background-color: #eaf2f8; 
+    z-index: 10;
+    padding: 10px 0;
+    border-bottom: 1px solid #b0c4de; 
+}
+
+
+#button-container {
+    width: 4in;
+    position: fixed;
+    right: 0;
+    top: 100px;
+    height: calc(100% - 60px);
+    background-color: #ffffff; 
+    padding: 20px;
+    border-left: 1px solid #d1d9e6; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.1); 
+}
+
+
+#button-container button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 90%;
+    background-color: #3498db; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+
+#button-container button:hover {
+    background-color: #2980b9; 
+}
+
+
+#button-container input {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 16px;
+    width: 90%;
+    border: 1px solid #b0c4de; 
+    border-radius: 5px;
+    background-color: #f8faff; 
+}
+
+
+#process-container {
+    margin-top: 100px;
+    margin-left: 20px;
+    flex-grow: 1;
+    padding: 20px;
+    border: 1px solid #d1d9e6; 
+    border-radius: 5px;
+    max-width: calc(100% - 4in - 120px);
+    overflow-x: auto;
+    background-color: #ffffff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+
+.process {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.process label {
+    margin-right: 10px;
+    color: #34495e; 
+}
+
+
+.process input {
+    width: 30%;
+    padding: 5px;
+    border: 1px solid #b0c4de; 
+    border-radius: 5px;
+    background-color: #f8faff; 
+}
+
+
+#results-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+
+#results h2 {
+    color: #34495e; 
+    margin-bottom: 10px;
+}
+
+
+#tat-result,
+#wt-result {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #2c3e50; 
+}
+
+
+.modal-content {
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+
+.modal-content h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    color: #2c3e50; 
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d; 
+}
+
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+#results-table th,
+#results-table td {
+    border: 1px solid #d1d9e6; 
+    padding: 10px;
+    text-align: center;
+}
+
+
+#results-table th {
+    background-color: #ecf0f1; 
+    font-weight: bold;
+    color: #2c3e50; 
+}
+
+.gantt-chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    overflow-x: auto;
+}
+
+
+.gantt-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4c74af; 
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    min-width: 30px; 
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.gantt-task::before {
+    content: attr(data-start);
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: #333;
+}
+
+
+.gantt-task::after {
+    content: attr(data-end);
+    position: absolute;
+    top: -20px;
+    right: 0;
+    font-size: 12px;
+    color: #333;
+}
+
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.scale-marker span {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #333;
+}
+.scale {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 20px;
+    border-top: 2px solid #333;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.gantt-task .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background-color: #ffc107;
+    width: 50%; 
+}
+
+
+.zoom-in, .zoom-out {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.gantt-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+#footer {
+    text-align: center;
+    padding: 2px;
+    font-size: 12px;
+    background-color: #ecf0f1; 
+    color: #34495e; 
+    border-top: 1px solid #eaedf1; 
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
